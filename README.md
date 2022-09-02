@@ -25,7 +25,6 @@ python main.py
 Follow the instructions on the menu
 
 ## Current radios
----
 
 - FIP
 - Radio Valentín Letelier

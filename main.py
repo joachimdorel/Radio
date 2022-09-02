@@ -1,4 +1,8 @@
+from ast import For
+import os
 import vlc
+
+from colorama import Back, Fore, Style
 
 radios = [
   {
@@ -8,7 +12,7 @@ radios = [
   },
   {
     id: 1,
-    'name': 'RVL',
+    'name': 'Radio Valentín Letelier',
     'url': 'https://cast235.indax.cl/8026/stream'
   }
 ]
@@ -33,11 +37,13 @@ menuOptions = {
   5: 'Info on Radio'
 }
 
-def showMenu():
-  print('\n --- MENU --- ')
+def showMenu(currentRadio):
+  print(Back.BLUE + '\n --- MENU --- ' + Back.BLACK + Fore.WHITE)
   for key in menuOptions:
     print(key, ' - ', menuOptions[key])
-  print(' --- \n')
+  print(Back.BLUE + ' --- ' + Back.BLACK + Fore.WHITE)
+  print('📻 You are currently listening to ' + Back.BLUE + Fore.BLACK + 
+        radios[currentRadio]['name'] + ' 🎙\n' + Back.BLACK + Fore.WHITE)
 
 # function to change the current radio
 def changeRadio(currentRadio, direction):
@@ -69,7 +75,8 @@ if __name__ == '__main__':
     player.play()
 
     while (True):
-      showMenu()
+      os.system('clear')
+      showMenu(currentRadio)
       userChoice = ''
 
       try:
